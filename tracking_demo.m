@@ -116,7 +116,8 @@ AverageTime = TotalTime/(frame_start + frame_end);
 
 %% Draw Tracking Results
 status = 2; % Change to drawing status
-out_path = '.\Results\ETH_Bahnhof\';
+delete('./Results/output/*.jpg');
+out_path = '.\Results\output\';
 
 DrawOption.isdraw = 1;
 DrawOption.iswrite = 1;

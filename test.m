@@ -1,5 +1,5 @@
 %% GUI for the software 
-% Last updated date: 2015. 12. 28
+% Last updated date: 2015. 12. 30
 % Copyright (C) 2015 Yao Xie
 % All rights reserved.
 
@@ -93,7 +93,7 @@ function pushbutton1_Callback(hObject, eventdata, handles)
 % handles structure with handles and user data (see GUIDATA)
 global num_of_frames;
 for q=1:num_of_frames
-    filename = strcat('.\Results\ETH_Bahnhof\Tracking_Results_',num2str(q,'%04d'));
+    filename = strcat('.\Results\output\Tracking_Results_',num2str(q,'%04d'));
     filename = strcat(filename,'.jpg');
     axes1=imread(filename); 
     imshow(axes1);
@@ -158,6 +158,9 @@ t=timer('TimerFcn',{@update,handles},'ExecutionMode', 'fixedRate', 'Period', 0.1
 start(t);
 global status;
 status = 6;
+mkdir('Sequences\source');
+mkdir('Det');
+mkdir('Results\output');
 videofilename=uigetfile('*.*','open');
 global num_of_frames;
 num_of_frames = camera(videofilename);

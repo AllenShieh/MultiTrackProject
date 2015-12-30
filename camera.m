@@ -1,5 +1,5 @@
 %% GUI for the software 
-% Last updated date: 2015. 12. 28
+% Last updated date: 2015. 12. 30
 % Copyright (C) 2015 Jiajun Jin & Yao Xie
 % All rights reserved.
 
@@ -34,6 +34,7 @@ global status;
 status = 4;
 global cutting_cur;
 %videofilename='test.mp4'; %where you put the video file
+delete('./Sequences/source/*.png');
 video=VideoReader(videofilename);
 numFrames=video.NumberOfFrames;
 disp('Cutting images');

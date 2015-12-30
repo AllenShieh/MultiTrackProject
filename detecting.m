@@ -16,7 +16,7 @@ status = 5;
 global num_of_frames;    % Number of images
 %global img_path;
 %directory = img_path;
-directory = '.\Sequences\source';   % Directory of images
+directory = '.\Sequences\source\';   % Directory of images
 
 %% Initialization
 load('.\detector\models\AcfCaltech+Detector.mat');
@@ -27,7 +27,7 @@ detections(1,num_of_frames)=struct('x',[],'y',[],'w',[],'h',[]);
 global detect_cur;
 for i = 1: num_of_frames
     detect_cur = i;
-    filename = [num2str(i,'%04d'), '.png'];
+    filename = [directory, num2str(i,'%04d'), '.png'];
     disp(filename);
     bbs = acfDetect(filename, detector);
     [row col] = size(bbs);
