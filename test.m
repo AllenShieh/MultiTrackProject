@@ -1,5 +1,5 @@
 %% GUI for the software 
-% Last updated date: 2015. 12. 30
+% Last updated date: 2015. 1. 7
 % Copyright (C) 2015 Yao Xie
 % All rights reserved.
 
@@ -68,6 +68,8 @@ handles.output = hObject;
 % Update handles structure
 guidata(hObject, handles);
 
+global status;
+status = 0;
 % UIWAIT makes test wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
 
@@ -91,15 +93,20 @@ function pushbutton1_Callback(hObject, eventdata, handles)
 % hObject handle to pushbutton1 (see GCBO)
 % eventdata reserved - to be defined in a future version of MATLAB
 % handles structure with handles and user data (see GUIDATA)
-global num_of_frames;
-for q=1:num_of_frames
-    filename = strcat('.\Results\output\Tracking_Results_',num2str(q,'%04d'));
-    filename = strcat(filename,'.jpg');
-    axes1=imread(filename); 
-    imshow(axes1);
-    pause(0.01);
+global status;
+if(status~=3)
+    msgbox('请先处理视频');
+else
+    global num_of_frames;
+    for q=1:num_of_frames
+        filename = strcat('.\Results\output\Tracking_Results_',num2str(q,'%04d'));
+        filename = strcat(filename,'.jpg');
+        axes1=imread(filename); 
+        imshow(axes1);
+        pause(0.01);
+    end
 end
-
+    
 function update(hObject, eventdata, handles)
 global dynamic;
 global process_cur;
@@ -137,17 +144,20 @@ function pushbutton2_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 global status;
-status = 0;
-set(handles.text3,'string','读取数据文件');
-global dynamic;
-dynamic = 0;
-set(handles.text2,'string','动态人数计数');
-set(handles.text1,'string','最终人数计数');
+if(status~=7)
+    msgbox('请先选择视频');
+else
+    status = 0;
+    set(handles.text3,'string','读取数据文件');
+    global dynamic;
+    dynamic = 0;
+    set(handles.text2,'string','动态人数计数');
+    set(handles.text1,'string','最终人数计数');
 
-result = tracking_demo();
-set(handles.text1,'string',[sprintf('总共检测到%d个人',result)]);
-set(handles.text3,'string','done');
-
+    result = tracking_demo();
+    set(handles.text1,'string',[sprintf('总共检测到%d个人',result)]);
+    set(handles.text3,'string','done');
+end
 
 % --- Executes on button press in pushbutton3.
 function pushbutton3_Callback(hObject, eventdata, handles)
@@ -178,14 +188,19 @@ function pushbutton4_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton4 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-disp(sprintf('play the original video'));
-global img_path;
-global num_of_frames;
-for q=1:num_of_frames
-    filename = strcat(img_path,num2str(q,'%04d'));
-    filename = strcat(filename,'.png');
-    disp(filename);
-    axes1=imread(filename); 
-    imshow(axes1);
-    pause(0.01);
+global status;
+if(status~=7)
+    msgbox('请先选择视频');
+else
+    disp(sprintf('play the original video'));
+    global img_path;
+    global num_of_frames;
+    for q=1:num_of_frames
+        filename = strcat(img_path,num2str(q,'%04d'));
+        filename = strcat(filename,'.png');
+        disp(filename);
+        axes1=imread(filename); 
+        imshow(axes1);
+        pause(0.01);
+    end
 end
