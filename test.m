@@ -1,5 +1,5 @@
 %% GUI for the software 
-% Last updated date: 2015. 1. 7
+% Last updated date: 2015. 1. 8
 % Copyright (C) 2015 Yao Xie
 % All rights reserved.
 
@@ -70,6 +70,9 @@ guidata(hObject, handles);
 
 global status;
 status = 0;
+filename = 'open.jpg';
+axes1=imread(filename); 
+imshow(axes1);
 % UIWAIT makes test wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
 
@@ -144,7 +147,7 @@ function pushbutton2_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 global status;
-if(status~=7)
+if(status==0)
     msgbox('请先选择视频');
 else
     status = 0;
@@ -189,7 +192,7 @@ function pushbutton4_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 global status;
-if(status~=7)
+if(status==0)
     msgbox('请先选择视频');
 else
     disp(sprintf('play the original video'));

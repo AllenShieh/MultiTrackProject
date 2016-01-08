@@ -2,6 +2,7 @@ function [result, all_mot] = MOT_Draw_Tracking(Trk_sets, out_path, img_path, img
 %% Copyright (C) 2014 Seung-Hwan Bae
 %% All rights reserved.
 % Modified by Yao Xie to implement the function for the software.
+% Last updated date: 2016. 1. 8.
 
 % Draw Tracking Results
 if ~isfield(option,'new_thr'); 
@@ -19,6 +20,19 @@ for q=1:length(Trk_sets)
     wind_cx=[];  wind_cy =[]; windw = []; windh = [];
     Labels =[]; trk_idx = [];  trk_sts =[]; conf = [];
     
+    my_lab = Trk_sets(q).label;
+    %disp(size(my_lab));
+    %disp(length(my_lab));
+    %disp(numel(my_lab));
+    for xx=1:numel(my_lab)
+        %disp([sprintf('%d',my_lab(xx))]);
+        if(my_lab(xx)>result)
+            result = my_lab(xx);
+            global dynamic;
+            dynamic = result;
+            %disp(dynamic);
+        end
+    end
     
     if q<=new_thr
         trk_idx = Trk_sets(new_thr+1).high;
@@ -50,14 +64,15 @@ for q=1:length(Trk_sets)
         end
         if ~isempty(wind_cx)
             all_lab = Trk_sets(q).label;
-            for xx=high:low
-                %disp([sprintf('%d',all_lab(xx))]);
-                if(all_lab(xx)>result)
-                    result = all_lab(xx);
-                    global dynamic;
-                    dynamic = result;
-                end
-            end
+            %for xx=high:low
+            %   disp([sprintf('%d',all_lab(xx))]);
+             %   if(all_lab(xx)>result)
+             %       result = all_lab(xx);
+              %      global dynamic;
+             %       dynamic = result;
+              %      disp(dynamic);
+             %   end
+            %end
             Labels = [all_lab(high), all_lab(low)];
         end
     end
