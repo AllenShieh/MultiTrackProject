@@ -32,7 +32,7 @@ function varargout = test(varargin)
 
 % Edit the above text to modify the response to help test
 
-% Last Modified by GUIDE v2.5 28-Dec-2015 16:08:02
+% Last Modified by GUIDE v2.5 09-Jan-2016 23:15:25
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
 gui_State = struct('gui_Name',       mfilename, ...
@@ -66,7 +66,6 @@ handles.output = hObject;
 
 % Update handles structure
 guidata(hObject, handles);
-
 global status;
 status = 0;
 filename = 'open.jpg';
@@ -206,3 +205,20 @@ else
         pause(0.01);
     end
 end
+
+
+% --- Executes on button press in pushbutton5.
+function pushbutton5_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton5 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes during object creation, after setting all properties.
+function text4_CreateFcn(hObject, eventdata, handles)
+global username;
+set(hObject,'string',username);
+% hObject    handle to text4 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
