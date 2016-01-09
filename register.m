@@ -163,7 +163,7 @@ else
         fprintf(userTable, '%s\r\n', rpassword);
         fclose(userTable);
         close(gcf);
-        open('login.fig');
+        login();
     end
 end
 
@@ -175,7 +175,7 @@ function pushbutton2_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 close(gcf);
-open('login.fig');
+login();
 
 
 

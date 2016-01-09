@@ -159,7 +159,7 @@ for i = 1:size(allUsername, 1)
         flag = 1;
         if (strcmp(password, char(allPassword(i,:))))
             close(gcf);
-            open('test.fig');
+            test();
             return;
         else
             msgbox('Wrong Password');
@@ -177,4 +177,4 @@ function pushbutton2_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 close(gcf);
-open('register.fig');
+register();
