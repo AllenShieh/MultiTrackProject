@@ -52,9 +52,8 @@ function login_OpeningFcn(hObject, eventdata, handles, varargin)
 % handles    structure with handles and user data (see GUIDATA)
 % varargin   command line arguments to login (see VARARGIN)
 global username;
-global password;
-username = '';
-password = '';
+
+end
 
 % Choose default command line output for login
 handles.output = hObject;
@@ -78,14 +77,13 @@ varargout{1} = handles.output;
 
 
 
-
 function edit1_Callback(hObject, eventdata, handles)
 % hObject    handle to edit1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 global username;
 username = get(hObject, 'string');
-
+end
 % Hints: get(hObject,'String') returns contents of edit1 as text
 %        str2double(get(hObject,'String')) returns contents of edit1 as a double
 
@@ -110,7 +108,7 @@ function edit2_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 global password;
 password = get(hObject, 'string');
-
+end
 
 % Hints: get(hObject,'String') returns contents of edit2 as text
 %        str2double(get(hObject,'String')) returns contents of edit2 as a double
