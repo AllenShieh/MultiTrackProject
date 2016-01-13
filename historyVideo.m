@@ -1,3 +1,13 @@
+%% GUI for the software 
+% Last updated date: 2016. 1. 13
+% Copyright (C) 2015 Jiajun Jin
+% All rights reserved.
+
+% Course project for Software Engineering and Computer Graphics.
+% Done by Jiajun Jin, Zhaoxiong Yang, Yupeng Zhang and Yao Xie.
+% Thank the author for providing the algorithm.
+%%
+
 function varargout = historyVideo(varargin)
 % HISTORYVIDEO MATLAB code for historyVideo.fig
 %      HISTORYVIDEO, by itself, creates a new HISTORYVIDEO or raises the existing

@@ -2,7 +2,6 @@ function  mot_draw_confidence_boxes(bg_image, wind_lx,wind_ly,windw,windh,Labels
 %% Copyright (C) 2014 Seung-Hwan Bae
 %% All rights reserved.
 
-
 rectcolor = colormap(jet(16));
 ncol = size(rectcolor,1);
 

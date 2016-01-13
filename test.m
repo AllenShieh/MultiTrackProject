@@ -1,6 +1,6 @@
 %% GUI for the software 
-% Last updated date: 2015. 1. 8
-% Copyright (C) 2015 Yao Xie
+% Last updated date: 2015. 1. 13
+% Copyright (C) 2015 Yao Xie & Jiajun Jin
 % All rights reserved.
 
 % Course project for Software Engineering and Computer Graphics.
@@ -204,6 +204,7 @@ status = 6;
 mkdir('Sequences\source');
 mkdir('Det');
 mkdir('Results\output');
+mkdir('Results\pos');
 videofilename=uigetfile('*.*','open');
 global num_of_frames;
 num_of_frames = camera(videofilename);

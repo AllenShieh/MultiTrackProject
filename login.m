@@ -1,3 +1,13 @@
+%% GUI for the software 
+% Last updated date: 2016. 1. 13
+% Copyright (C) 2015 Jiajun Jin & Yao Xie
+% All rights reserved.
+
+% Course project for Software Engineering and Computer Graphics.
+% Done by Jiajun Jin, Zhaoxiong Yang, Yupeng Zhang and Yao Xie.
+% Thank the author for providing the algorithm.
+%%
+
 function varargout = login(varargin)
 % LOGIN MATLAB code for login.fig
 %      LOGIN, by itself, creates a new LOGIN or raises the existing
@@ -56,6 +66,8 @@ global password;
 username = '';
 password = '';
 
+fp=fopen('user.txt','a');
+fclose(fp);
 % Choose default command line output for login
 handles.output = hObject;
 
