@@ -70,7 +70,8 @@ global status;
 status = 0;
 filename = 'open.jpg';
 axes1=imread(filename); 
-imshow(axes1);
+imshow(axes1, 'parent', handles.axes1);
+imshow(axes1, 'parent', handles.axes2);
 % UIWAIT makes test wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
 
@@ -99,11 +100,31 @@ if(status~=3)
     msgbox('请先处理视频');
 else
     global num_of_frames;
+    color = ['r', 'g', 'b', 'c', 'm', 'y', 'k'];
+    i = 1;
     for q=1:num_of_frames
         filename = strcat('.\Results\output\Tracking_Results_',num2str(q,'%04d'));
         filename = strcat(filename,'.jpg');
         axes1=imread(filename); 
-        imshow(axes1);
+        imshow(axes1, 'parent', handles.axes1);
+        
+        [imgh,imgw, a]=size(axes1);
+        fp = fopen(strcat('Results\pos\', num2str(q), '.txt'), 'r');
+        while ~feof(fp)
+            line = fgetl(fp);
+            if (line == -1)
+                break;
+            end
+            tmp = regexp(line, '\t', 'split');
+            xpos = str2num(char(tmp(2)));
+            ypos = str2num(char(tmp(3)));
+            
+            plot(handles.axes2, xpos, ypos, '.', 'color', color(mod(str2num(char(tmp(1))), 7) + 1));
+            hold on;
+            axis(handles.axes2, [0 imgw 0 imgh]);
+            i = i + 1;
+        end
+        fclose(fp);
         pause(0.01);
     end
 end
@@ -145,6 +166,7 @@ function pushbutton2_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 global status;
+global username;
 if(status==0)
     msgbox('请先选择视频');
 else
@@ -158,6 +180,16 @@ else
     result = tracking_demo();
     set(handles.text1,'string',[sprintf('总共检测到%d个人',result)]);
     set(handles.text3,'string','done');
+    
+    d = dir(strcat('history\', username));
+    mkdir(strcat('history\', username, '\', num2str(length(d) - 2 + 1)));
+    
+    global num_of_frames;
+    for q=1:num_of_frames
+        filename = strcat('.\Results\output\Tracking_Results_',num2str(q,'%04d'));
+        filename = strcat(filename,'.jpg');
+        copyfile(filename, strcat('history\', username, '\', num2str(length(d) - 2 + 1), '\', num2str(q,'%04d'), '.jpg'));
+    end
 end
 
 % --- Executes on button press in pushbutton3.
@@ -209,6 +241,8 @@ end
 
 % --- Executes on button press in pushbutton5.
 function pushbutton5_Callback(hObject, eventdata, handles)
+close(gcf);
+history();
 % hObject    handle to pushbutton5 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)

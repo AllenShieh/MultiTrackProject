@@ -14,6 +14,7 @@ new_thr = option.new_thr;
 all_mot = [];
 result = 0;
 for q=1:length(Trk_sets)
+    
     filename = strcat(img_path,img_List(q).name);
     rgbimg = imread(filename);
     
@@ -85,7 +86,7 @@ for q=1:length(Trk_sets)
         
         fg1 = figure(1);
 
-        mot_draw_confidence_boxes(rgbimg, wind_lx, wind_ly,windw,windh,Labels, conf);
+        mot_draw_confidence_boxes(rgbimg, wind_lx, wind_ly,windw,windh,Labels, conf, q);
         
         if ~exist(out_path);mkdir(out_path);end;
         

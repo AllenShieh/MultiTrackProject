@@ -162,6 +162,7 @@ else
         fprintf(userTable,'%s\t', rusername);
         fprintf(userTable, '%s\r\n', rpassword);
         fclose(userTable);
+        mkdir(strcat('history\', rusername));
         close(gcf);
         login();
     end

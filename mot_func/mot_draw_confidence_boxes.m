@@ -1,4 +1,4 @@
-function  mot_draw_confidence_boxes(bg_image, wind_lx,wind_ly,windw,windh,Labels,conf)
+function  mot_draw_confidence_boxes(bg_image, wind_lx,wind_ly,windw,windh,Labels,conf,q)
 %% Copyright (C) 2014 Seung-Hwan Bae
 %% All rights reserved.
 
@@ -15,6 +15,9 @@ hold on;
 
 l_width = 5;
 base_fonts = 15;
+
+fp = fopen(strcat('Results\pos\', num2str(q), '.txt'), 'w');
+
 for i=1:length(wind_lx)
     Roi = [wind_lx(i), wind_ly(i), windw(i), windh(i)]; 
     lab = Labels(i);
@@ -56,7 +59,12 @@ for i=1:length(wind_lx)
    hold on;
    text(txt_cx, txt_cy ,sprintf('%d',lab),'Color','k','Fontsize',nfonts,...
        'HorizontalAlignment','Center','FontWeight','bold');
+   
+   fprintf(fp, '%d\t',lab);
+   fprintf(fp, '%f\t', wind_lx(i) + windw(i) / 2);
+   fprintf(fp, '%f\r\n', wind_ly(i) + windh(i) / 2);
 end
+fclose(fp);
 hold off;
 
 
