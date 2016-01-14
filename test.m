@@ -1,11 +1,13 @@
 %% GUI for the software 
-% Last updated date: 2015. 1. 13
+% The main interface of the software where choosing, detecting, 
+% tracking and displaying are done.
+
+% Last updated date: 2016. 1. 14
 % Copyright (C) 2015 Yao Xie & Jiajun Jin
 % All rights reserved.
 
 % Course project for Software Engineering and Computer Graphics.
 % Done by Jiajun Jin, Zhaoxiong Yang, Yupeng Zhang and Yao Xie.
-% Thank the author for providing the algorithm.
 %%
 
 function varargout = test(varargin)

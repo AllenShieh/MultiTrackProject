@@ -1,8 +1,8 @@
 function [result] = tracking_demo()
 %% Robust Online Multi-Object Tracking based on Tracklet Confidence 
 % and Online Discriminative Appearance Learning (CVPR2014)
-% Last updated date: 2014. 07. 27
-% Copyright (C) 2014 Seung-Hwan Bae
+% Last updated date: 2016. 1. 14
+% Copyright (C) 2014 Seung-Hwan Bae & Yao Xie
 % All rights reserved.
 
 % Course project for Software Engineering and Computer Graphics.

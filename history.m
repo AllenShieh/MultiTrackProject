@@ -1,11 +1,12 @@
 %% GUI for the software 
-% Last updated date: 2016. 1. 13
+% Show the history records of video processed.
+
+% Last updated date: 2016. 1. 14
 % Copyright (C) 2015 Jiajun Jin
 % All rights reserved.
 
 % Course project for Software Engineering and Computer Graphics.
 % Done by Jiajun Jin, Zhaoxiong Yang, Yupeng Zhang and Yao Xie.
-% Thank the author for providing the algorithm.
 %%
 
 function varargout = history(varargin)
