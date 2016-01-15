@@ -2,8 +2,8 @@
 % The main interface of the software where choosing, detecting, 
 % tracking and displaying are done.
 
-% Last updated date: 2016. 1. 14
-% Copyright (C) 2015 Yao Xie & Jiajun Jin
+% Last updated date: 2016. 1. 15
+% Copyright (C) 2015 Yao Xie & Jiajun Jin & Yupeng Zhang
 % All rights reserved.
 
 % Course project for Software Engineering and Computer Graphics.
@@ -121,7 +121,7 @@ else
             xpos = str2num(char(tmp(2)));
             ypos = str2num(char(tmp(3)));
             
-            plot(handles.axes2, xpos, ypos, '.', 'color', color(mod(str2num(char(tmp(1))), 7) + 1));
+            plot(handles.axes2, xpos, imgh-ypos, '.', 'color', color(mod(str2num(char(tmp(1))), 7) + 1));
             hold on;
             axis(handles.axes2, [0 imgw 0 imgh]);
             i = i + 1;
